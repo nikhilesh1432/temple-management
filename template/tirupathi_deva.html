@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirumala Tirupathi - Bookings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('tirupati.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .container {
+            color: black;
+            position: relative;
+            z-index: 1;
+        }
+
+        .booking-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .booking-option {
+            background-color: grey;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .booking-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px black;
+        }
+
+        .booking-option h2 {
+            color:black;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .btn-booking {
+            width: 150px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-booking:hover {
+            background-color: pink;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center mt-5">Sri Lakshmi Tirupathi Amma Temple</h1>
+    <div class="booking-options">
+        <div class="booking-option">
+            <h2>PAID DARSHAN</h2>
+            <button class="btn btn-warning btn-booking">Book Now</button>
+        </div>
+        <div class="booking-option">
+            <h2>FREE DARSHAN</h2>
+            <button class="btn btn-warning btn-booking">Book Now</button>
+        </div>
+        <div class="booking-option">
+            <h2>VEHICLE PARKING</h2>
+            <button class="btn btn-warning btn-booking">Book Now</button>
+        </div>
+        <div class="booking-option">
+            <h2>ROOMS BOOKING</h2>
+            <button class="btn btn-warning btn-booking">Book Now</button>
+        </div>
+        <div class="booking-option">
+            <h2>PRASAD BOOKING</h2>
+            <button class="btn btn-warning btn-booking">Book Now</button>
+        </div>
+        <div class="booking-option">
+            <h2>VIP BOOKING</h2>
+            <button class="btn btn-warning btn-booking">Book Now</button>
+        </div>
+        <div class="booking-option">
+            <h2>FOOD BOOKING</h2>
+            <button class="btn btn-warning btn-booking">Book Now</button>
+        </div>
+        <div class="booking-option">
+            <h2>TAXI BOOKING</h2>
+            <button class="btn btn-warning btn-booking">Book Now</button>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

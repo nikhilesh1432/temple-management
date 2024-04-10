@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            color: #fff;
+            position: relative;
+            min-height: 100vh;
+        }
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: bold;
+        }
+        .navbar img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        .home-section {
+            background-image: url('temple.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .home-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .section {
+            padding: 100px 0;
+        }
+        .search-result {
+            margin-top: 20px;
+        }
+        footer {
+            background-color: #212121;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        #suggestions {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            display: none;
+            z-index: 999;
+            width: calc(100% - 2px); 
+        }
+
+        #suggestions a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        #suggestions a:hover {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="Logo">
+            Temple Management System
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="darshanbooking.html">Bookings</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search Temple" aria-label="Search" id="searchInput" onkeyup="showSuggestions()">
+                <div id="suggestions"></div>
+                <button class="btn btn-outline-light" type="button" onclick="searchTemple()">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<section id="home" class="home-section">
+    <div class="container home-content">
+        <h1>Welcome to Temple Management System</h1>
+        <p>Explore, Book, and Experience the Divine.</p>
+    </div>
+</section>
+<section id="about" class="section bg-dark">
+    <div class="container">
+        <h2 class="text-center mb-4">About Us</h2>
+        <p class="text-center">We are dedicated to providing spiritual enlightenment and upliftment to all devotees.</p>
+    </div>
+</section>
+<section id="contact" class="section bg-dark">
+    <div class="container">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <p class="text-center">If you have any queries or need assistance, feel free to reach out to us at info@templemanagement.com</p>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center search-result">
+            <p id="templeLocation"></p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Temple Management System. All rights reserved.</p>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script>
+    var suggestions = ["Kanaka Durgamma Temple", "Tirupathi Devasthanam", "Sri Lakshmi Tirupathi Amma Temple"];
+
+    function showSuggestions() {
+        var input = document.getElementById('searchInput');
+        var filter = input.value.trim().toUpperCase();
+        var div = document.getElementById("suggestions");
+        div.innerHTML = "";
+
+        if (filter) {
+            var filteredSuggestions = suggestions.filter(function(suggestion) {
+                return suggestion.toUpperCase().startsWith(filter);
+            });
+
+            if (filteredSuggestions.length > 0) {
+                filteredSuggestions.forEach(function(suggestion) {
+                    var a = document.createElement('a');
+                    a.textContent = suggestion;
+                    a.setAttribute('onclick', 'selectSuggestion(this)');
+                    div.appendChild(a);
+                });
+                div.style.display = "block";
+            } else {
+                div.style.display = "none";
+            }
+        } else {
+            div.style.display = "none";
+        }
+    }
+
+    function selectSuggestion(element) {
+        document.getElementById('searchInput').value = element.textContent;
+        document.getElementById("suggestions").innerHTML = "";
+    }
+
+    function searchTemple() {
+        var searchInput = document.getElementById("searchInput").value;
+
+        switch(searchInput.toLowerCase()) {
+            case "kanaka durgamma temple":
+                window.location.href = "kanaka_durgamma.html";
+                break;
+            case "tirupathi devasthanam":
+                window.location.href = "tirupathi_deva.html";
+                break;
+            case "sri lakshmi tirupathi amma temple":
+                window.location.href = "srilakshmitirupathiamma.html";
+                break;
+            default:
+                document.getElementById("templeLocation").textContent = "Temple not found.";
+        }
+    }
+</script>
+</body>
+</html>
