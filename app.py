@@ -2,11 +2,43 @@ from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 import os
 
-client = MongoClient('mongodb+srv://santhoshpodili874:SANTHU@cluster0.rz2dqev.mongodb.net/Cluster0')
-db = client['temple_bookings']
-collection = db['bookings']
-
 app = Flask(__name__, template_folder="template", static_url_path='/static')
+
+def connect_to_database():
+    try:
+        client = MongoClient(os.environ.get('mongodb+srv://santhoshpodili874:SANTHU@cluster0.rz2dqev.mongodb.net/Cluster0'))
+        db = client['temple_bookings']
+        collection = db['bookings']
+        print("Database connection successful")
+        return collection
+    except Exception as e:
+        print("Failed to connect to database:", e)
+        return None
+
+def save_booking_details(booking_details):
+    try:
+        collection = connect_to_database()
+        if collection:
+            result = collection.insert_one(booking_details)
+            if result.inserted_id:
+                print("Booking details saved successfully")
+                return True
+            else:
+                print("Failed to save booking details")
+                return False
+    except Exception as e:
+        print("Error saving booking details:", e)
+        return False
+
+def get_booking_details():
+    try:
+        collection = connect_to_database()
+        if collection:
+            booking_details = collection.find_one()
+            return booking_details
+    except Exception as e:
+        print("Error getting booking details:", e)
+        return None
 
 @app.route('/')
 def home():
@@ -14,7 +46,7 @@ def home():
     
 @app.route('/confirmation')
 def confirmation():
-    booking_details = collection.find_one() 
+    booking_details = get_booking_details() 
     return render_template('confirmation.html', booking_details=booking_details)
     
 @app.route('/paid_payment')
@@ -68,8 +100,7 @@ def taxi_booking():
 @app.route('/save_booking', methods=['POST'])
 def save_booking():
     booking_details = request.json
-    result = collection.insert_one(booking_details)
-    if result.inserted_id:
+    if save_booking_details(booking_details):
         return jsonify({'message': 'Booking details saved successfully!'}), 200
     else:
         return jsonify({'error': 'Failed to save booking details.'}), 500
