@@ -27,7 +27,7 @@ def srilakshmitirupathiamma():
     return render_template("srilakshmitirupathiamma.html")
     
 @app.route('/paid_darshan')
-def paiddarshan():
+def paid_darshan():
     return render_template("paiddarshan.html")
     
 @app.route('/save_booking', methods=['POST'])
