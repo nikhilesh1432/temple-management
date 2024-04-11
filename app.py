@@ -14,7 +14,8 @@ def home():
     
 @app.route('/confirmation')
 def confirmation():
-    return render_template('confirmation.html')
+    booking_details = collection.find_one() 
+    return render_template('confirmation.html', booking_details=booking_details)
     
 @app.route('/paid_payment')
 def paid_payment():
