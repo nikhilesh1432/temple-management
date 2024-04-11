@@ -171,22 +171,22 @@
     }
 
     function searchTemple() {
-        var searchInput = document.getElementById("searchInput").value;
+    var searchInput = document.getElementById("searchInput").value;
 
-        switch(searchInput.toLowerCase()) {
-            case "kanaka durgamma temple":
-                window.location.href = "kanaka_durgamma.html";
-                break;
-            case "tirupathi devasthanam":
-                window.location.href = "tirupathi_deva.html";
-                break;
-            case "sri lakshmi tirupathi amma temple":
-                window.location.href = "srilakshmitirupathiamma.html";
-                break;
-            default:
-                document.getElementById("templeLocation").textContent = "Temple not found.";
-        }
+    switch(searchInput.toLowerCase()) {
+        case "kanaka durgamma temple":
+            window.location.href = "/kanaka_durgamma";
+            break;
+        case "tirupathi devasthanam":
+            window.location.href = "/tirupathi_deva";
+            break;
+        case "sri lakshmi tirupathi amma temple":
+            window.location.href = "/srilakshmitirupathiamma";
+            break;
+        default:
+            document.getElementById("templeLocation").textContent = "Temple not found.";
     }
+}
 </script>
 </body>
 </html>
