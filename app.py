@@ -5,15 +5,26 @@ import secrets
 import string
 import os
 
+client = MongoClient('mongodb://localhost:27017/')
+db = client['temple_bookings']
+collection = db['bookings']
+
 app = Flask(__name__, template_folder="template")
 
 @app.route('/')
 def home():
     return render_template("index.html")
+@app.route('/kanaka_durgamma')
+def kanaka_durgamma():
+    return render_template("kanaka_durgamma.html")
 
-client = MongoClient('mongodb://localhost:27017/')
-db = client['temple_bookings']
-collection = db['bookings']
+@app.route('/tirupathi_deva')
+def tirupathi_deva():
+    return render_template("tirupathi_deva.html")
+
+@app.route('/srilakshmitirupathiamma')
+def srilakshmitirupathiamma():
+    return render_template("srilakshmitirupathiamma.html")
 
 @app.route('/save_booking', methods=['POST'])
 def save_booking():
