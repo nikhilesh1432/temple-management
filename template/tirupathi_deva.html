@@ -17,7 +17,7 @@
         }
 
         .container {
-            color: black;
+            color:#fff;
             position: relative;
             z-index: 1;
         }
@@ -59,6 +59,16 @@
             background-color: pink;
             transform: scale(1.1);
         }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -67,38 +77,73 @@
     <div class="booking-options">
         <div class="booking-option">
             <h2>PAID DARSHAN</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/paid_darshan')">Book Now</button>
+            <button id="paidButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>FREE DARSHAN</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/free_darshan')">Book Now</button>
+            <button id="freeButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>VEHICLE PARKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/vehicle')">Book Now</button>
+            <button id="vehicleButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>ROOMS BOOKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/roombooking')">Book Now</button>
+            <button id="roomButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>PRASAD BOOKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/prasadbooking')">Book Now</button>
+            <button id="prasadButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>VIP BOOKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/vip_darshan')">Book Now</button>
+            <button id="vipButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>FOOD BOOKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/foodbooking')">Book Now</button>
+            <button id="foodButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>TAXI BOOKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/taxibooking')">Book Now</button>
+            <button id="taxiButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
     </div>
 </div>
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Sri Lakshmi Tirupathi Amma Temple. All rights reserved.</p>
+    </div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script>
+    function redirectToPage(page) {
+        window.location.href = page;
+    }
+</script
+<script>
+    document.getElementById("paidButton").addEventListener("click", function() {
+        bookNow("/paiddarshan");
+    });
+    document.getElementById("freeButton").addEventListener("click", function() {
+        bookNow("/free_darshan");
+    });
+    document.getElementById("vehicleButton").addEventListener("click", function() {
+        bookNow("/vehicle");
+    });
+    document.getElementById("roomButton").addEventListener("click", function() {
+        bookNow("/roombooking");
+    });
+    document.getElementById("prasadButton").addEventListener("click", function() {
+        bookNow("/prasadbooking");
+    });
+    document.getElementById("vipButton").addEventListener("click", function() {
+        bookNow("/vip_darshan");
+    });
+    document.getElementById("foodButton").addEventListener("click", function() {
+        bookNow("/foodbooking");
+    });
+    document.getElementById("taxiButton").addEventListener("click", function() {
+        bookNow("/taxibooking");
+    });
 </body>
 </html>
