@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .btn-make-payment {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-make-payment:hover {
+            background-color: #0056b3;
+        }
+        .payment-logos img {
+            width: 80px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Payment Page</h1>
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" class="form-control" id="cardNumber" maxlength="16" required>
+            </div>
+            <div class="form-group">
+                <label for="expireDate">Expiration Date:</label>
+                <input type="text" class="form-control" id="expireDate" maxlength="5" placeholder="MM/YY" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" class="form-control" id="cvv" maxlength="3" required>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">terms and conditions</a></label>
+            </div>
+            <button type="submit" class="btn btn-make-payment mt-4">Make Payment (₹2850)</button>
+        </form>
+        <div class="text-center mt-4 payment-logos">
+            <h3>Pay with:</h3>
+            <a href="phonepe://pay?number=7981630014&amount=350&note=Payment"><img src="static/phonepe_logo.png" alt="PhonePe"></a>
+            <a href="upi://pay?pa=santhugithub-1@oksbi&pn=github%20santhu&aid=uGICAgMCI07rZWA&tn=darshan&am=2850&cu=INR"><img src="static/googlepay_logo.png" alt="Google Pay"></a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("paymentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var cardNumber = document.getElementById("cardNumber").value;
+            var expireDate = document.getElementById("expireDate").value;
+            var cvv = document.getElementById("cvv").value;
+            var agreeTerms = document.getElementById("agreeTerms").checked;
+
+            if (agreeTerms) {
+                console.log("Card Number:", cardNumber);
+                console.log("Expiration Date:", expireDate);
+                console.log("CVV:", cvv);
+                console.log("Payment successful!");
+                window.location.href = "/confirmation";
+            } else {
+                alert("Please agree to the terms and conditions.");
+            }
+        });
+    </script>
+</body>
+</html>
