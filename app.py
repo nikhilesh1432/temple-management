@@ -25,7 +25,11 @@ def tirupathi_deva():
 @app.route('/srilakshmitirupathiamma')
 def srilakshmitirupathiamma():
     return render_template("srilakshmitirupathiamma.html")
-
+    
+@app.route('/paid_darshan')
+def paiddarshan():
+    return render_template("paiddarshan.html")
+    
 @app.route('/save_booking', methods=['POST'])
 def save_booking():
     booking_details = request.json
