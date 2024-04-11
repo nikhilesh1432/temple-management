@@ -2,4 +2,4 @@ Flask
 asyncio
 pygments
 gunicorn
-pymongo 
+pymongo[SRV]
