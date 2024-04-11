@@ -13,7 +13,7 @@ def home():
     return render_template("index.html")
     
 @app.route('/paid_payment')
-def paid_payment()
+def paid_payment():
     return render_template('paidpayment.html')
     
 @app.route('/kanaka_durgamma')
