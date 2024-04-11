@@ -11,8 +11,9 @@ app = Flask(__name__, template_folder="template", static_url_path='/static')
 @app.route('/')
 def home():
     return render_template("index.html")
-@app.route('/paidpayment')
-def paidpayment()
+    
+@app.route('/paid_payment')
+def paid_payment()
     return render_template('paidpayment.html')
     
 @app.route('/kanaka_durgamma')
