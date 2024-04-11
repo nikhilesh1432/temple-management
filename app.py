@@ -1,8 +1,5 @@
-from flask import Flask, request, jsonify
-from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
-import secrets
-import string
+from pymongo import MongoClient
 import os
 
 client = MongoClient('mongodb://localhost:27017/')
@@ -14,6 +11,7 @@ app = Flask(__name__, template_folder="template", static_url_path='/static')
 @app.route('/')
 def home():
     return render_template("index.html")
+
 @app.route('/kanaka_durgamma')
 def kanaka_durgamma():
     return render_template("kanaka_durgamma.html")
@@ -25,11 +23,39 @@ def tirupathi_deva():
 @app.route('/srilakshmitirupathiamma')
 def srilakshmitirupathiamma():
     return render_template("srilakshmitirupathiamma.html")
-    
-@app.route('/paid_darshan')
+
+@app.route('/paiddarshan')
 def paid_darshan():
     return render_template("paiddarshan.html")
-    
+
+@app.route('/free_darshan')
+def free_darshan():
+    return render_template("free_darshan.html")
+
+@app.route('/vehicle')
+def vehicle_parking():
+    return render_template("vehicle.html")
+
+@app.route('/roombooking')
+def room_booking():
+    return render_template("roombooking.html")
+
+@app.route('/prasadbooking')
+def prasad_booking():
+    return render_template("prasadbooking.html")
+
+@app.route('/vip_darshan')
+def vip_darshan():
+    return render_template("vip_darshan.html")
+
+@app.route('/foodbooking')
+def food_booking():
+    return render_template("foodbooking.html")
+
+@app.route('/taxibooking')
+def taxi_booking():
+    return render_template("taxibooking.html")
+
 @app.route('/save_booking', methods=['POST'])
 def save_booking():
     booking_details = request.json
