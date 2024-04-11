@@ -10,6 +10,11 @@ db = client['temple_bookings']
 collection = db['bookings']
 
 app = Flask(__name__, template_folder="template")
+STATIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+
+@app.route('/assets/')
+def serve_static(path):
+    return send_from_directory(STATIC_DIR, path)
 
 @app.route('/')
 def home():
