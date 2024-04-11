@@ -77,35 +77,35 @@
     <div class="booking-options">
         <div class="booking-option">
             <h2>PAID DARSHAN</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/paiddarshan.html')">Book Now</button>
+            <button id="paidButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>FREE DARSHAN</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/free_darshan.html')">Book Now</button>
+            <button id="freeButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>VEHICLE PARKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/vehicle.html')">Book Now</button>
+            <button id="vehicleButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>ROOMS BOOKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/roombooking.html')">Book Now</button>
+            <button id="roomButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>PRASAD BOOKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/prasadbooking.html')">Book Now</button>
+            <button id="prasadButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>VIP BOOKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/vip_darshan.html')">Book Now</button>
+            <button id="vipButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>FOOD BOOKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/foodbooking.html')">Book Now</button>
+            <button id="foodButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
         <div class="booking-option">
             <h2>TAXI BOOKING</h2>
-            <button class="btn btn-warning btn-booking" onclick="redirectToPage('/taxibooking.html')">Book Now</button>
+            <button id="taxiButton" class="btn btn-warning btn-booking">Book Now</button>
         </div>
     </div>
 </div>
@@ -119,6 +119,31 @@
     function redirectToPage(page) {
         window.location.href = page;
     }
-</script>
+</script
+<script>
+    document.getElementById("paidButton").addEventListener("click", function() {
+        bookNow("/paiddarshan");
+    });
+    document.getElementById("freeButton").addEventListener("click", function() {
+        bookNow("/free_darshan");
+    });
+    document.getElementById("vehicleButton").addEventListener("click", function() {
+        bookNow("/vehicle");
+    });
+    document.getElementById("roomButton").addEventListener("click", function() {
+        bookNow("/roombooking");
+    });
+    document.getElementById("prasadButton").addEventListener("click", function() {
+        bookNow("/prasadbooking");
+    });
+    document.getElementById("vipButton").addEventListener("click", function() {
+        bookNow("/vip_darshan");
+    });
+    document.getElementById("foodButton").addEventListener("click", function() {
+        bookNow("/foodbooking");
+    });
+    document.getElementById("taxiButton").addEventListener("click", function() {
+        bookNow("/taxibooking");
+    });
 </body>
 </html>
