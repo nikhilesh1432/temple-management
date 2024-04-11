@@ -52,6 +52,34 @@ def confirmation():
 @app.route('/paid_payment')
 def paid_payment():
     return render_template('paidpayment.html')
+
+@app.route('/vehicle_payment')
+def vehicle_payment():
+    return render_template('vehicle_payment.html')
+
+@app.route('/room_payment')
+def room_payment():
+    return render_template('room_payment.html')
+
+@app.route('/food_payment')
+def food_payment():
+    return render_template('food_payment.html')
+
+@app.route('/prasad_payment')
+def prasad_payment():
+    return render_template('prasad_payment.html')
+
+@app.route('/vip_payment')
+def vip_payment():
+    return render_template('vip_payment.html')
+
+@app.route('/taxi_payment')
+def food_payment():
+    return render_template('taxi_payment.html')
+    
+@app.route('/room_booking')
+def room_booking():
+    return render_template('room_booking.html')
     
 @app.route('/kanaka_durgamma')
 def kanaka_durgamma():
