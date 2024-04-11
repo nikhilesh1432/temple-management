@@ -134,7 +134,7 @@
                     <label for="email">Email Address:</label>
                     <input type="email" class="form-control" id="email" required>
                 </div>
-                <button type="submit" class="btn btn-book">Book Now</button>
+                <button type="submit" class="btn btn-book">Payment</button>
             </form>
         </div>
     </div>
@@ -143,9 +143,8 @@
     function saveBookingDetails(details) {
         console.log("Booking Details:", details);
         alert("Booking Successful!");
-        window.location.href = "confirmation.html";
+        window.location.href = "paidpayment.html";
     }
-
     document.getElementById("bookingForm").addEventListener("submit", function(event) {
         event.preventDefault();
         var name = document.getElementById("name").value;
