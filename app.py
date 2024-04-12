@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, jsonify
-from pymongo import MongoClient
+from pymongo import MongoClient, ssl_cert_reqs
 import os
 
 app = Flask(__name__, template_folder="template", static_url_path='/static')
 
 def connect_to_database():
     try:
-        client = MongoClient('mongodb+srv://santhoshpodili874:SANTHU7981@cluster0.rz2dqev.mongodb.net/Cluster0', ssl=True, tlsAllowInvalidCertificates=True)
+        client = MongoClient('mongodb+srv://santhoshpodili874:SANTHU7981@cluster0.rz2dqev.mongodb.net/Cluster0', ssl=True, ssl_cert_reqs=ssl_cert_reqs.CERT_NONE)
         db = client['Cluster0']
         print("Database connection successful")
         return db  # Return the database client
