@@ -58,6 +58,10 @@ def confirmation():
     booking_details = get_booking_details() 
     return render_template('confirmation.html', booking_details=booking_details)
     
+@app.route('/tc')
+def tc():
+    return render_template('tc.html')
+
 @app.route('/paid_payment')
 def paid_payment():
     return render_template('paidpayment.html')
