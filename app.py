@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 import os
+import ssl
 
 app = Flask(__name__, template_folder="template", static_url_path='/static')
 
