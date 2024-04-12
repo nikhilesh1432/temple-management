@@ -6,19 +6,19 @@ app = Flask(__name__, template_folder="template", static_url_path='/static')
 
 def connect_to_database():
     try:
-        client = MongoClient(os.environ.get('mongodb+srv://santhoshpodili874:SANTHU@cluster0.rz2dqev.mongodb.net/Cluster0'))
-        db = client['temple_bookings']
-        collection = db['bookings']
+        client = MongoClient('mongodb+srv://santhoshpodili874:SANTHU7981@cluster0.rz2dqev.mongodb.net/Cluster0', ssl=True, tlsAllowInvalidCertificates=True)
+        db = client['Cluster0']
         print("Database connection successful")
-        return collection
+        return db  # Return the database client
     except Exception as e:
         print("Failed to connect to database:", e)
         return None
 
 def save_booking_details(booking_details):
     try:
-        collection = connect_to_database()
-        if collection:
+        db = connect_to_database()
+        if db:
+            collection = db['bookings']
             result = collection.insert_one(booking_details)
             if result.inserted_id:
                 print("Booking details saved successfully")
@@ -32,10 +32,18 @@ def save_booking_details(booking_details):
 
 def get_booking_details():
     try:
-        collection = connect_to_database()
-        if collection:
+        db = connect_to_database()
+        if db is not None:
+            collection = db['bookings']
             booking_details = collection.find_one()
-            return booking_details
+            if booking_details:
+                return booking_details
+            else:
+                print("No booking details found")
+                return {}
+        else:
+            print("Failed to connect to database")
+            return {}
     except Exception as e:
         print("Error getting booking details:", e)
         return None
@@ -60,26 +68,10 @@ def vehicle_payment():
 @app.route('/room_payment')
 def room_payment():
     return render_template('room_payment.html')
-
-@app.route('/food_payment')
-def food_payment():
-    return render_template('food_payment.html')
-
-@app.route('/prasad_payment')
-def prasad_payment():
-    return render_template('prasad_payment.html')
-
-@app.route('/vip_payment')
-def vip_payment():
-    return render_template('vip_payment.html')
-
-@app.route('/taxi_payment')
-def food_payment():
-    return render_template('taxi_payment.html')
     
-@app.route('/room_booking')
-def room_booking():
-    return render_template('room_booking.html')
+@app.route('/roombooking')
+def roombooking():
+    return render_template('roombooking.html')
     
 @app.route('/kanaka_durgamma')
 def kanaka_durgamma():
@@ -127,12 +119,17 @@ def taxi_booking():
 
 @app.route('/save_booking', methods=['POST'])
 def save_booking():
-    booking_details = request.json
-    if save_booking_details(booking_details):
-        return jsonify({'message': 'Booking details saved successfully!'}), 200
-    else:
-        return jsonify({'error': 'Failed to save booking details.'}), 500
+    try:
+        booking_details = request.json
+        if save_booking_details(booking_details):
+            return jsonify({'message': 'Booking details saved successfully!'}), 200
+        else:
+            return jsonify({'error': 'Failed to save booking details.'}), 500
+    except Exception as e:
+        print("Error saving booking:", e)
+        return jsonify({'error': 'Failed to save booking details. Invalid data format.'}), 400
+
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 4450))
     app.run(host='0.0.0.0', port=port, debug=True)
