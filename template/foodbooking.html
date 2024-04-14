@@ -47,34 +47,18 @@
                     <input type="text" class="form-control" id="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="age">Age:</label>
-                    <input type="number" class="form-control" id="age" maxlength="2" required>
-                </div>
-                <div class="form-group">
-                    <label for="adhar">Adhar Number:</label>
-                    <input type="text" class="form-control" id="adhar" maxlength="12" required>
-                </div>
-                <div class="form-group">
                     <label for="phone">Phone Number:</label>
                     <input type="tel" class="form-control" id="phone" maxlength="10" required>
                 </div>
                 <div class="form-group">
-                    <label for="quantity">Tickets Quantity:</label>
-                    <input type="number" class="form-control" id="quantity" maxlength="2" required>
-                </div>
-                <div class="form-group">
-                    <label for="dates">Which Dates Selected:</label>
-                    <input type="text" class="form-control" id="dates" required>
-                </div>
-                <div class="form-group">
-                    <label for="food">Food Options:</label>
+                    <label for="food">Select Food Item:</label>
                     <select id="food" class="form-control">
-                        <option value="Papu Charu Rice">Papu Charu Rice</option>
+                        <option value="sambar Rice">Papu Charu Rice</option>
                         <option value="Curd Rice">Curd Rice</option>
-                        <option value="Chutney">Chutney</option>
-                        <option value="Papads">Papads</option>
-                        <option value="Sorakaya">Sorakaya</option>
-                        <option value="Berakaya Chutney">Berakaya Chutney</option>
+                        <option value="veg half meal">Chutney</option>
+                        <option value="veg full meal">Papads</option>
+                        <option value="dosa">Sorakaya</option>
+                        <option value="tiffens tali">Berakaya Chutney</option>
                         <option value="Roti with Paneer">Roti with Paneer</option>
                     </select>
                 </div>
@@ -96,20 +80,12 @@
     document.getElementById("bookingForm").addEventListener("submit", function(event) {
         event.preventDefault();
         var name = document.getElementById("name").value;
-        var age = document.getElementById("age").value;
-        var adhar = document.getElementById("adhar").value;
         var phone = document.getElementById("phone").value;
-        var quantity = document.getElementById("quantity").value;
-        var dates = document.getElementById("dates").value;
         var email = document.getElementById("email").value;
         var food = document.getElementById("food").value;
         var bookingDetails = {
             name: name,
-            age: age,
-            adhar: adhar,
             phone: phone,
-            quantity: quantity,
-            dates: dates,
             email: email,
             food: food
         };
