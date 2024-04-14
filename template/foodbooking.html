@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .btn-book {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: yellow;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-book:hover {
+            background-color: #ff0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Food Booking</h1>
+        <div class="booking-form">
+            <h2 class="mt-5">Booking Details</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" class="form-control" id="age" maxlength="2" required>
+                </div>
+                <div class="form-group">
+                    <label for="adhar">Adhar Number:</label>
+                    <input type="text" class="form-control" id="adhar" maxlength="12" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" class="form-control" id="phone" maxlength="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Tickets Quantity:</label>
+                    <input type="number" class="form-control" id="quantity" maxlength="2" required>
+                </div>
+                <div class="form-group">
+                    <label for="dates">Which Dates Selected:</label>
+                    <input type="text" class="form-control" id="dates" required>
+                </div>
+                <div class="form-group">
+                    <label for="food">Food Options:</label>
+                    <select id="food" class="form-control">
+                        <option value="Papu Charu Rice">Papu Charu Rice</option>
+                        <option value="Curd Rice">Curd Rice</option>
+                        <option value="Chutney">Chutney</option>
+                        <option value="Papads">Papads</option>
+                        <option value="Sorakaya">Sorakaya</option>
+                        <option value="Berakaya Chutney">Berakaya Chutney</option>
+                        <option value="Roti with Paneer">Roti with Paneer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <button type="submit" class="btn btn-book">Payment</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+   <script>
+    function saveBookingDetails(details) {
+        console.log("Booking Details:", details);
+        alert("Booking Successful!");
+        window.location.href = "/paid_payment";
+    }
+    document.getElementById("bookingForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var name = document.getElementById("name").value;
+        var age = document.getElementById("age").value;
+        var adhar = document.getElementById("adhar").value;
+        var phone = document.getElementById("phone").value;
+        var quantity = document.getElementById("quantity").value;
+        var dates = document.getElementById("dates").value;
+        var email = document.getElementById("email").value;
+        var food = document.getElementById("food").value;
+        var bookingDetails = {
+            name: name,
+            age: age,
+            adhar: adhar,
+            phone: phone,
+            quantity: quantity,
+            dates: dates,
+            email: email,
+            food: food
+        };
+        saveBookingDetails(bookingDetails);
+    });
+</script>
+</body>
+</html>
 
